@@ -34,12 +34,12 @@ extension DefineFunction on PseudoTerminal {
     write('\n');
     final Completer lock = Completer();
     StreamSubscription<String> subscription;
-    schedulingRead();
+    startPolling();
     subscription = out.listen((event) async {
       // Log.w(event);
       // ignore: avoid_slow_async_io
       final bool exist = await tmpFile.exists();
-      if (!exist) {
+      if (!exist && !lock.isCompleted) {
         subscription.cancel();
         lock.complete();
         out.drain();
