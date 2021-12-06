@@ -31,7 +31,7 @@ class TerminalUtil {
     Directory(RuntimeEnvir.tmpPath).createSync(recursive: true);
     final Map<String, String> environment = {
       'TERM': 'xterm-256color',
-      'PATH': PlatformUtil.environment()['PATH'],
+      'PATH': RuntimeEnvir.path,
       'TMPDIR': RuntimeEnvir.tmpPath,
     };
     if (Platform.isAndroid) {
@@ -43,7 +43,7 @@ class TerminalUtil {
             '${RuntimeEnvir.usrPath}/lib/libtermux-exec.so';
       }
     } else {
-      environment['HOME'] = PlatformUtil.environment()['HOME'];
+      environment['HOME'] = RuntimeEnvir.envir()['HOME'];
     }
     return PseudoTerminal(
       executable: executable,
