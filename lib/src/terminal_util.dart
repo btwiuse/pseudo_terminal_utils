@@ -27,8 +27,12 @@ class TerminalUtil {
         executable ??= 'sh';
       }
     }
-    Directory(RuntimeEnvir.homePath).createSync(recursive: true);
-    Directory(RuntimeEnvir.tmpPath).createSync(recursive: true);
+    try {
+      Directory(RuntimeEnvir.homePath).createSync(recursive: true);
+      Directory(RuntimeEnvir.tmpPath).createSync(recursive: true);
+    } catch (e) {
+      Log.e('create dir error : $e');
+    }
     final Map<String, String> environment = {
       'TERM': 'xterm-256color',
       'PATH': RuntimeEnvir.path,
