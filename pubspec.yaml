@@ -4,7 +4,7 @@ version: 0.0.1
 homepage:
 
 environment:
-  sdk: ">=2.10.0 <3.0.0"
+  sdk: ">=3.0.0 <4.0.0"
   flutter: ">=1.17.0"
 
 dependencies:
@@ -13,7 +13,7 @@ dependencies:
   dart_pty:
     git: https://github.com/Termare/dart_pty
   global_repository:
-    git: https://github.com/nightmare-space/global_repository
+    git: https://github.com/btwiuse/global_repository
 dev_dependencies:
   flutter_test:
     sdk: flutter
